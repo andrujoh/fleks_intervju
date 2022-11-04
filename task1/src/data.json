@@ -1,0 +1,102 @@
+[
+  {
+    "firstName": "Noah",
+    "lastName": "Ruud",
+    "birthday": "1997-09-23T15:20:34.578Z"
+  },
+  {
+    "firstName": "Marie",
+    "lastName": "Eide",
+    "birthday": "1971-04-22T23:40:50.239Z"
+  },
+  {
+    "firstName": "Amalie",
+    "lastName": "Nygård",
+    "birthday": "1957-11-22T10:39:14.455Z"
+  },
+  {
+    "firstName": "Aksel",
+    "lastName": "Jacobsen",
+    "birthday": "1951-03-14T14:48:53.555Z"
+  },
+  {
+    "firstName": "Julie",
+    "lastName": "Olstad",
+    "birthday": "1996-03-11T10:36:54.462Z"
+  },
+  {
+    "firstName": "Elias",
+    "lastName": "Torp",
+    "birthday": "1972-09-10T19:27:13.437Z"
+  },
+  {
+    "firstName": "Mats",
+    "lastName": "Holm",
+    "birthday": "2003-01-01T11:08:38.583Z"
+  },
+  {
+    "firstName": "Sunniva",
+    "lastName": "Rasmussen",
+    "birthday": "1944-12-05T03:45:31.267Z"
+  },
+  {
+    "firstName": "Anna",
+    "lastName": "Torgersen",
+    "birthday": "1991-08-18T07:37:05.319Z"
+  },
+  {
+    "firstName": "Celine",
+    "lastName": "Jørgensen",
+    "birthday": "1996-03-13T14:52:33.713Z"
+  },
+  {
+    "firstName": "Aksel",
+    "lastName": "Skuterud",
+    "birthday": "1971-12-18T00:59:40.878Z"
+  },
+  {
+    "firstName": "Tiril",
+    "lastName": "Røed",
+    "birthday": "1942-09-15T00:51:52.432Z"
+  },
+  {
+    "firstName": "Sander",
+    "lastName": "Skoglund",
+    "birthday": "1958-11-23T22:44:52.584Z"
+  },
+  {
+    "firstName": "Sandra",
+    "lastName": "Gran",
+    "birthday": "1953-11-17T20:56:10.617Z"
+  },
+  {
+    "firstName": "Håkon",
+    "lastName": "Andersen",
+    "birthday": "1992-03-08T11:02:03.906Z"
+  },
+  {
+    "firstName": "Sofie",
+    "lastName": "Jensen",
+    "birthday": "1943-08-05T09:54:39.684Z"
+  },
+  {
+    "firstName": "Vilde",
+    "lastName": "Vedvik",
+    "birthday": "1992-02-26T19:50:07.091Z"
+  },
+  {
+    "firstName": "Elias",
+    "lastName": "Johnsen",
+    "birthday": "2001-06-14T01:44:00.787Z"
+  },
+  {
+    "firstName": "Linnea",
+    "lastName": "Røed",
+    "birthday": "1952-10-31T21:55:18.544Z"
+  },
+  {
+    "firstName": "Celine",
+    "lastName": "Amundsen",
+    "birthday": "1985-01-04T01:18:59.814Z"
+  }
+]
