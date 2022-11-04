@@ -8,7 +8,7 @@ function getDateFormat(date) {
 const FILTERENUM = {
   FIRSTNAME: "firstName",
   LASTNAME: "lastName",
-  AGE: "age",
+  BIRTHDAY: "birthday",
 };
 
 function App() {
@@ -26,15 +26,13 @@ function App() {
   const sortedPeople = () => {
     if ([FILTERENUM.FIRSTNAME, FILTERENUM.LASTNAME].includes(filter)) {
       return people.sort((a, b) => a[filter].localeCompare(b[filter]));
-    } else if (filter === FILTERENUM.AGE) {
-      return people.sort((a, b) => a[filter] - b[filter]);
+    } else if (filter === FILTERENUM.BIRTHDAY) {
+      return people.sort((a, b) => getAge(a[filter]) - getAge(b[filter]));
     } else {
       return people;
     }
   };
-  filter === FILTERENUM.FIRSTNAME
-    ? people.sort((a, b) => a[filter].localeCompare(b[filter]))
-    : people.sort((a, b) => getAge(a.birthday) - getAge(b.birthday));
+
   return (
     <div className="mx-auto max-w-xl">
       <header>
@@ -72,14 +70,14 @@ function App() {
             </div>
             <div>
               <input
-                checked={filter === FILTERENUM.AGE}
+                checked={filter === FILTERENUM.BIRTHDAY}
                 onChange={changeFilter}
-                value={FILTERENUM.AGE}
-                id={FILTERENUM.AGE}
+                value={FILTERENUM.BIRTHDAY}
+                id={FILTERENUM.BIRTHDAY}
                 type="radio"
                 name="filter"
               />
-              <label className="ml-2" htmlFor={FILTERENUM.AGE}>
+              <label className="ml-2" htmlFor={FILTERENUM.BIRTHDAY}>
                 Age
               </label>
             </div>
@@ -100,7 +98,8 @@ function App() {
                   <span className={filter === FILTERENUM.LASTNAME ? "font-bold" : ""}>{lastName}</span>
                 </td>
                 <td className={filter === FILTERENUM.AGE ? "font-bold" : ""}>
-                  {getDateFormat(birthday)}, Age: {getAge(birthday)}
+                  {getDateFormat(birthday)}, Age:{" "}
+                  <span className={filter === FILTERENUM.BIRTHDAY ? "font-bold" : ""}>{getAge(birthday)}</span>
                 </td>
               </tr>
             ))}
