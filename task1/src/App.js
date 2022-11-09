@@ -24,10 +24,11 @@ function App() {
   }
 
   const sortedPeople = () => {
+    const copyOfPeople = [...people];
     if ([FILTERENUM.FIRSTNAME, FILTERENUM.LASTNAME].includes(filter)) {
-      return people.sort((a, b) => a[filter].localeCompare(b[filter]));
+      return copyOfPeople.sort((a, b) => a[filter].localeCompare(b[filter]));
     } else if (filter === FILTERENUM.BIRTHDAY) {
-      return people.sort((a, b) => getAge(a[filter]) - getAge(b[filter]));
+      return copyOfPeople.sort((a, b) => getAge(a[filter]) - getAge(b[filter]));
     } else {
       return people;
     }
@@ -82,6 +83,9 @@ function App() {
               </label>
             </div>
           </div>
+          <button className="p-2 mb-2 bg-gray-200" type="button" onClick={() => changeFilter(null)}>
+            Clear filter
+          </button>
         </section>
         <table className="w-full">
           <thead>
