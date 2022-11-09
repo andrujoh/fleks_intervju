@@ -83,7 +83,7 @@ function App() {
               </label>
             </div>
           </div>
-          <button className="p-2 mb-2 bg-gray-200" type="button" onClick={() => changeFilter(null)}>
+          <button className="p-2 mb-2 bg-gray-200" type="button" onClick={() => setFilter(null)}>
             Clear filter
           </button>
         </section>
