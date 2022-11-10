@@ -1,9 +1,6 @@
 import people from "./data.json";
 import { useState } from "react";
-
-function getDateFormat(date) {
-  return new Date(date).toLocaleDateString("en-NO");
-}
+import { differenceInYears, format } from "date-fns";
 
 const FILTERENUM = {
   FIRSTNAME: "firstName",
@@ -19,11 +16,10 @@ function App() {
   }
 
   function getAge(date) {
-    const thisYear = new Date().getFullYear();
-    return thisYear - new Date(date).getFullYear();
+    return differenceInYears(new Date(), new Date(date));
   }
 
-  const sortedPeople = () => {
+  function getSortedPeople() {
     const copyOfPeople = [...people];
     if ([FILTERENUM.FIRSTNAME, FILTERENUM.LASTNAME].includes(filter)) {
       return copyOfPeople.sort((a, b) => a[filter].localeCompare(b[filter]));
@@ -32,7 +28,11 @@ function App() {
     } else {
       return people;
     }
-  };
+  }
+
+  function getClass(target) {
+    return filter === FILTERENUM[target.toUpperCase()] ? "font-bold" : "";
+  }
 
   return (
     <div className="mx-auto max-w-xl">
@@ -42,48 +42,46 @@ function App() {
       <main>
         <section>
           <h4>Sort by</h4>
-          <div className="mb-4">
-            <div>
-              <input
-                checked={filter === FILTERENUM.FIRSTNAME}
-                onChange={changeFilter}
-                value={FILTERENUM.FIRSTNAME}
-                id={FILTERENUM.FIRSTNAME}
-                type="radio"
-                name="filter"
-              />
-              <label className="ml-2" htmlFor={FILTERENUM.FIRSTNAME}>
-                First Name
-              </label>
-            </div>
-            <div>
-              <input
-                checked={filter === FILTERENUM.LASTNAME}
-                onChange={changeFilter}
-                value={FILTERENUM.LASTNAME}
-                id={FILTERENUM.LASTNAME}
-                type="radio"
-                name="filter"
-              />
-              <label className="ml-2" htmlFor={FILTERENUM.LASTNAME}>
-                Last Name
-              </label>
-            </div>
-            <div>
-              <input
-                checked={filter === FILTERENUM.BIRTHDAY}
-                onChange={changeFilter}
-                value={FILTERENUM.BIRTHDAY}
-                id={FILTERENUM.BIRTHDAY}
-                type="radio"
-                name="filter"
-              />
-              <label className="ml-2" htmlFor={FILTERENUM.BIRTHDAY}>
-                Age
-              </label>
-            </div>
+          <div>
+            <input
+              checked={filter === FILTERENUM.FIRSTNAME}
+              onChange={changeFilter}
+              value={FILTERENUM.FIRSTNAME}
+              id={FILTERENUM.FIRSTNAME}
+              type="radio"
+              name="filter"
+            />
+            <label className="ml-2" htmlFor={FILTERENUM.FIRSTNAME}>
+              First Name
+            </label>
           </div>
-          <button className="p-2 mb-2 bg-gray-200" type="button" onClick={() => setFilter(null)}>
+          <div>
+            <input
+              checked={filter === FILTERENUM.LASTNAME}
+              onChange={changeFilter}
+              value={FILTERENUM.LASTNAME}
+              id={FILTERENUM.LASTNAME}
+              type="radio"
+              name="filter"
+            />
+            <label className="ml-2" htmlFor={FILTERENUM.LASTNAME}>
+              Last Name
+            </label>
+          </div>
+          <div>
+            <input
+              checked={filter === FILTERENUM.BIRTHDAY}
+              onChange={changeFilter}
+              value={FILTERENUM.BIRTHDAY}
+              id={FILTERENUM.BIRTHDAY}
+              type="radio"
+              name="filter"
+            />
+            <label className="ml-2" htmlFor={FILTERENUM.BIRTHDAY}>
+              Age
+            </label>
+          </div>
+          <button className="p-2 my-4 bg-gray-200" onClick={() => setFilter(null)}>
             Clear filter
           </button>
         </section>
@@ -95,15 +93,15 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {sortedPeople().map(({ firstName, lastName, birthday }, index) => (
+            {getSortedPeople().map(({ firstName, lastName, birthday }, index) => (
               <tr key={index}>
                 <td>
-                  <span className={filter === FILTERENUM.FIRSTNAME ? "font-bold" : ""}>{firstName}</span>{" "}
-                  <span className={filter === FILTERENUM.LASTNAME ? "font-bold" : ""}>{lastName}</span>
+                  <span className={getClass(FILTERENUM.FIRSTNAME)}>{firstName}</span>{" "}
+                  <span className={getClass(FILTERENUM.LASTNAME)}>{lastName}</span>
                 </td>
-                <td className={filter === FILTERENUM.AGE ? "font-bold" : ""}>
-                  {getDateFormat(birthday)}, Age:{" "}
-                  <span className={filter === FILTERENUM.BIRTHDAY ? "font-bold" : ""}>{getAge(birthday)}</span>
+                <td>
+                  {format(new Date(birthday), "dd-MM-YYY")}, Age:{" "}
+                  <span className={getClass(FILTERENUM.BIRTHDAY)}>{getAge(birthday)}</span>
                 </td>
               </tr>
             ))}
