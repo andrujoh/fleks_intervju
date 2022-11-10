@@ -31,7 +31,7 @@ function App() {
   }
 
   function getClass(target) {
-    return filter === FILTERENUM[target.toUpperCase()] ? "font-bold" : "";
+    return filter === target ? "font-bold" : "";
   }
 
   return (
